@@ -1,0 +1,15 @@
+<j:jelly xmlns:j="jelly:core" xmlns:g="glide">
+
+  <g:evaluate var="summary" expression="RP.getWindowProperties().get('summary')" />
+
+  <div style="padding:16px;">
+    <h2>Incident Summary</h2>
+
+    <pre style="white-space:pre-wrap; max-height:350px; overflow:auto; border:1px solid #ccc; padding:10px;">
+${summary}
+    </pre>
+
+    <button onclick="GlideDialogWindow.get().destroy();" style="margin-top:10px;">Close</button>
+  </div>
+
+</j:jelly>
