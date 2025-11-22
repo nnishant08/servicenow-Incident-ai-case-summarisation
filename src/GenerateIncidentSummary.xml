@@ -1,0 +1,22 @@
+<record_update table="sys_ui_action">
+  <name>Generate Incident Summary</name>
+  <action_name>generate_incident_summary</action_name>
+  <table>incident</table>
+  <client>true</client>
+  <form_button>true</form_button>
+  <active>true</active>
+  <condition>true</condition>
+  <script><![CDATA[
+var ga = new GlideAjax('IncidentSummarizerAjax');
+ga.addParam('sysparm_name', 'getSummary');
+ga.addParam('sysparm_incident_id', g_form.getUniqueValue());
+
+ga.getXMLAnswer(function(response) {
+    var dialog = new GlideDialogWindow('incident_summary_viewer');
+    dialog.setTitle("Incident Summary");
+    dialog.setPreference('summary', response);
+    dialog.setSize(700, 450);
+    dialog.render();
+});
+  ]]></script>
+</record_update>
